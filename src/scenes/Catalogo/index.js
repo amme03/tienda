@@ -120,6 +120,9 @@ class Catalogo extends Component {
             ArticleListCocina: articlesCocina,
             ArticleListSala: articlesSala
         });
+
+
+
     }
 
     static navigationOptions = {

@@ -10,16 +10,32 @@ import {
 
 import { createStackNavigator } from 'react-navigation';
 import Catalogo from './src/scenes/Catalogo';
-
+import Mercado from './src/scenes/Mercado';
+import Detalle from './src/scenes/Detalle';
+import Carrito from './src/scenes/Carrito';
+import Formulario from './src/scenes/Formulario';
 
 const AppNavigator = createStackNavigator({
   CatalogoScreen: {
     screen: Catalogo
   },
-
+  MercadoScreen: {
+    screen: Mercado
+  },
+  
+  DetalleScreen: {
+    screen: Detalle
+  },
+    
+  CarritoScreen: {
+    screen: Carrito
+  },
+  FormularioScreen: {
+    screen: Formulario
+  },
 },
   {
-    initialRouteName: 'CatalogoScreen',
+    initialRouteName: 'MercadoScreen',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#F5A9A9',
