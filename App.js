@@ -14,6 +14,7 @@ import Mercado from './src/scenes/Mercado';
 import Detalle from './src/scenes/Detalle';
 import Carrito from './src/scenes/Carrito';
 import Formulario from './src/scenes/Formulario';
+import Success from './src/scenes/Success';
 
 const AppNavigator = createStackNavigator({
   CatalogoScreen: {
@@ -32,6 +33,9 @@ const AppNavigator = createStackNavigator({
   },
   FormularioScreen: {
     screen: Formulario
+  },
+  SuccessScreen: {
+    screen: Success
   },
 },
   {

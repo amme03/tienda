@@ -17,7 +17,7 @@ YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTIm
 
 
 
-class Formulario extends Component {
+class Success extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +37,7 @@ class Formulario extends Component {
     }
 
     static navigationOptions = {
-        title: 'Datos de compra',
+        title: 'Confirmacion de compra',
         headerTitleStyle: {
             fontSize: 26,
         }
@@ -51,37 +51,22 @@ class Formulario extends Component {
                 <View style={styles.imageLogoView}>
                     <Image
                         style={styles.imageLogo}
-                        source={{ uri: 'https://c.wallhere.com/photos/f2/5d/happy_women_music_glasses_women_with_glasses_face_profile_headphones-220024.jpg!d' }}></Image>
+                        source={{ uri: 'https://previews.123rf.com/images/karakotsya/karakotsya1710/karakotsya171000074/87529649-thank-you-for-shopping-hand-lettering-modern-brush-calligraphy-black-ink-typography-vector-illustrat.jpg' }}></Image>
 
                 </View>
-                <View style={styles.formWrapper}>
 
-                    <Text style={styles.formLabel}> Nombre </Text>
-                    <Text style={styles.formInput}> Ana Maria Marrugo Escobar </Text>
-                    <Text style={styles.formLabel}> Telefono </Text>
-                    <TextInput
-                        placeholder="Telefono de usuario es..."
-                        style={styles.formInput}
-
-                    />
-                    <Text style={styles.formLabel}> Tarjeta de Credito </Text>
-                    <Text style={styles.formInput}>42444*** </Text>
-                    <Text style={styles.formLabel}> Direccion de envio </Text>
-                    <TextInput
-                        placeholder="Direccion usuario"
-                        style={styles.formInput}
-                    />
-                    <Text style={styles.formLabel}> Valor total compra </Text>
-                    <Text style={styles.formInput}>$ {this.state.carrito.price * this.state.iva * this.state.cantidad * 1 + this.state.carrito.price * this.state.cantidad * 1}</Text>
-
-                </View>
 
                 <View style={styles.imageBarnner} >
+                    <Text style={styles.formInputLabel}>Su compra por ${this.state.carrito.price * this.state.iva * this.state.cantidad * 1 + this.state.carrito.price * this.state.cantidad * 1} fue exitosa.</Text>
+                    <Text style={styles.formInput}>Si los productos del pedido están disponibles los pedidos serán enviados en un plazo máximo de veinticuatro (24) horas después de la recepción del comprobante de pago.</Text>
+                    <Text style={styles.formInput}>Para cambios, devoluciones, quejas y reclamos llamar a la linea nacional 0180007345999.</Text>
+                    <Text style={styles.formInput}></Text>
+
                     <View style={styles.descriptionButton}>
                         <Button
                             color={'#F5A9A9'}
-                            onPress={() => { this.props.navigation.navigate('SuccessScreen', { id: this.state.carrito._id }) }}
-                            title="Finalizar compra"
+                            onPress={() => { this.props.navigation.navigate('MercadoScreen') }}
+                            title="Seguir comprando"
                             loading
                             loadingProps={{ size: "small", color: "#F5A9A9" }}
                             titleStyle={{ fontWeight: "700" }}
@@ -109,7 +94,6 @@ const styles = StyleSheet.create({
         marginLeft: 2,
         marginRight: 2
     },
-
     imageBarnner: {
         width: 400,
         height: 250,
@@ -133,7 +117,21 @@ const styles = StyleSheet.create({
         borderRadius: 75,
     },
 
+    formInput: {
+        paddingLeft: 10,
+        color: '#F5A9A9',
+        marginTop: 20,
+        textAlignVertical:'auto'
 
+    },
+    formInputLabel: {
+        paddingLeft: 10,
+        color: '#F5A9A9',
+        marginTop: 20,
+        textAlignVertical:'auto',
+        fontSize: 20,
+       
+    },
     header: {
         fontSize: 18,
         backgroundColor: '#F5A9A9',
@@ -143,22 +141,10 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         color: '#F8EFFB',
     },
-    formWrapper: {
-        paddingLeft: 10,
-        marginVertical: 15,
-    },
-    formLabel: {
-        color: '#F5A9A9',
 
-    },
-    formInput: {
-        paddingLeft: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: '#ccc',
-    },
 });
 
 
 
 
-export default Formulario;
+export default Success;
