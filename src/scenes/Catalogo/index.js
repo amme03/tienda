@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import {
-    View,
-    ScrollView,
-    StyleSheet,
-    Image,
-    SectionList,
-    Text
-} from 'react-native';
+import { View, ScrollView, StyleSheet,Image,SectionList,Text} from 'react-native';
 import { YellowBox } from 'react-native';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
-
-
 import ItemCatalogo from './components/item-catalogo';
 import ItemSeparator from './components/item-separator';
-
 
 class Catalogo extends Component {
     constructor(props) {
@@ -24,7 +14,6 @@ class Catalogo extends Component {
             ArticleListSala: []
         }
     }
-
     //Ciclo de vida del componente
     componentDidMount() {
         const articlesBano = [
@@ -36,7 +25,6 @@ class Catalogo extends Component {
                 description:'Espejo con luz led, 42 piezas de luz led calida, se activa con un switch de sensor en la parte frontal medida 80cm x 60cm',
                 id: 1
             },
-
             {
                 name: 'Toallas',
                 price: '$90.000',
@@ -45,7 +33,6 @@ class Catalogo extends Component {
                 description:'Modelo: WAFFLE. \n Tipo: Toallas de cuerpo. \n  Material: Algodón.\n Apto para lavadora: Sí \n Hecho en: Portugal.Garantía del proveedor: 1 año.',
                 id: 2
             },
-
             {
                 name: 'Juego de baño',
                 price: '$12.000',
@@ -53,13 +40,12 @@ class Catalogo extends Component {
                 cantidad: '1 unidad',
                 id: 3
             },
-
             {
                 name: 'Velas aromaticas',
                 price: '$24.000',
                 photo: 'https://static.vix.com/es/sites/default/files/styles/large/public/i/istock-504484134.jpg',
                 cantidad: '4 unidades',
-                id: 3
+                id: 4
             },
         ];
 
@@ -71,7 +57,6 @@ class Catalogo extends Component {
                 cantidad: '1 unidad',
                 id: 1
             },
-
             {
                 name: 'Mugs',
                 price: '$55.000',
@@ -105,7 +90,6 @@ class Catalogo extends Component {
                 cantidad: '2 unidades',
                 id: 2
             },
-
             {
                 name: 'Cuadro',
                 price: '$324.664',
@@ -121,8 +105,6 @@ class Catalogo extends Component {
             ArticleListSala: articlesSala
         });
 
-
-
     }
 
     static navigationOptions = {
@@ -136,7 +118,6 @@ class Catalogo extends Component {
     separatorComponent = () => <ItemSeparator />;
     sectionHeader = ({ section }) => <Text style={styles.header}>{section.key}</Text>
     keyExtractor = item => item.id.toString();
-
     render() {
         return (
             <ScrollView style={styles.container}>
@@ -172,14 +153,12 @@ class Catalogo extends Component {
     };
 }
 
-
 const styles = StyleSheet.create({
     container: {
 
         marginLeft: 2,
         marginRight: 2
     },
-
     imageBarnner: {
         width: 414,
         height: 280
@@ -191,12 +170,8 @@ const styles = StyleSheet.create({
         paddingVertical: 3,
         marginBottom: 3,
         paddingLeft: 10,
-
     }
 
 });
-
-
-
 
 export default Catalogo;

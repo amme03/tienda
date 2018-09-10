@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import {
-    View,
-    ScrollView,
-    StyleSheet,
-    Image,
-    SectionList,
-    Text
-} from 'react-native';
-
+import {    View,    ScrollView,  Image,  SectionList,  Text} from 'react-native';
+import styles from './components/styles/styles-mercado';
 import Api from './../../../utils/api'
 import { YellowBox } from 'react-native';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
@@ -75,32 +68,4 @@ class Mercado extends Component {
         );
     };
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-
-        marginLeft: 2,
-        marginRight: 2
-    },
-
-    imageBarnner: {
-        width: 414,
-        height: 280
-    },
-    header: {
-        fontSize: 18,
-        backgroundColor: '#F5A9A9',
-        borderBottomColor: '#F5A9A9',
-        paddingVertical: 3,
-        marginBottom: 3,
-        paddingLeft: 10,
-
-    }
-
-});
-
-
-
-
 export default Mercado;
