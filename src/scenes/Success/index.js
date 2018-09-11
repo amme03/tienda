@@ -43,29 +43,30 @@ class Success extends Component {
 
                 </View>
                 <View style={styles.contenedorBotones}>
-                    <View style={styles.descriptionButton}>
+                    <View style={styles.buttonStyle}>
                         <Button
                             color={'#F5A9A9'}
                             onPress={() => { this.props.navigation.navigate('MercadoScreen') }}
                             title="Seguir comprando mercado"
                             loading
                             titleStyle={{ fontWeight: "700" }}
-                            buttonStyle={styles.buttonStyle}
                             containerStyle={{ marginTop: 20 }}
+
                         />
-                        <View style={styles.espacio}></View>
-                        <View style={styles.descriptionButton}>
-                            <Button
-                                color={'#F5A9A9'}
-                                onPress={() => { this.props.navigation.navigate('CatalogoScreen') }}
-                                title="Seguir comprando hogar"
-                                loading
-                                titleStyle={{ fontWeight: "700" }}
-                                buttonStyle={styles.buttonStyle}
-                                containerStyle={{ marginTop: 20 }} />
-                        </View>
+                    </View>
+                    <View style={styles.espacio}></View>
+                    <View style={styles.buttonStyle}>
+                        <Button
+                            color={'#F5A9A9'}
+                            onPress={() => { this.props.navigation.navigate('CatalogoScreen') }}
+                            title="Seguir comprando hogar"
+                            loading
+                            titleStyle={{ fontWeight: "700" }}
+                            containerStyle={{ marginTop: 20 }}
+                             />
                     </View>
                 </View>
+
             </ScrollView>
         );
     };

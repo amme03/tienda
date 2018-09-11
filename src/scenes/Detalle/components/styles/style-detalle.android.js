@@ -65,12 +65,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     contenedorBotones: {
-       
         flexDirection: 'row',
         height: 30,
         width: 100,
         alignContent: 'center',
-
     },
     contenedor: {
         flexDirection: 'row',

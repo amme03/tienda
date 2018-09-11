@@ -39,15 +39,21 @@ const styles = StyleSheet.create({
         height: 45,
         borderColor: "transparent",
         borderWidth: 0,
-        borderRadius: 5
+        borderRadius: 5,
+      
     },
     contenedorBotones: {
-       flexDirection: 'row',
-       alignContent: 'center',
+        flexDirection: 'row',
+        alignContent: 'center',
+        borderColor: "transparent",
+        borderWidth: 1,
+        borderRadius: 5,
+       
     },
     espacio: {
-        width: 3,
+        width: 10,
         height: 5,
+        alignContent: 'center',
 
     },
 });
