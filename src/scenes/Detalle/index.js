@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Image, Button, Text } from 'react-native';
-import Api from './../../../utils/api';
+//import Api from './../../../utils/api';//con api externa
 import styles from './components/styles/style-detalle';
 import { YellowBox } from 'react-native';
+import HttpProducts from '../../scenes/services/Products/http-products';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 class Detalle extends Component {
@@ -11,42 +12,44 @@ class Detalle extends Component {
         this.state = {
             detalle: {},
             contador: 0,
-            isDisabled:true,
+            isDisabled: true,
         }
     }
     //Ciclo de vida del componente
     async componentDidMount() {
-        const data = await Api.getArticleAwaitDetallle(this.props.navigation.getParam('id', ''));
-        console.log(data);
+        /* const data = await Api.getArticleAwaitDetallle(this.props.navigation.getParam('id', ''));
+        // console.log(data);                 //con api externa
+         //this.setState({ detalle: data, })*/
+        this.getProductsById()
+    }
+    //Consulta del producto desde el cliente
+    async getProductsById() {
+        const data = await HttpProducts.getProductsById(this.props.navigation.getParam('id', ''));
+        //console.log(data);
         this.setState({ detalle: data, })
     }
-
+    //Menu
     static navigationOptions = {
         title: 'Mercado',
         headerTitleStyle: {
             fontSize: 26,
         }
     }
-
-
-
+    //Funciones para agregar o reducir la cantidad de articulos que se van a comprar
     incrementar() {
         this.setState({
-            contador:  this.state.contador===20 ? 20:this.state.contador + 1,
-            isDisabled:false,
+            contador: this.state.contador === 20 ? 20 : this.state.contador + 1,
+            isDisabled: false,
         })
     }
-
     decrementar() {
-        console.log(this.state.contador===0);
+        console.log(this.state.contador === 0);
         this.setState({
-            isDisabled:this.state.contador<=1,
-            contador: this.state.contador===0 ? 0:this.state.contador - 1,
-            
+            isDisabled: this.state.contador <= 1,
+            contador: this.state.contador === 0 ? 0 : this.state.contador - 1,
+
         })
     }
-
-
     render() {
         return (
             <ScrollView style={styles.container}>
@@ -76,15 +79,15 @@ class Detalle extends Component {
                     </View>
                     <View style={styles.descriptionText}>
                         <Text style={styles.descriptionLocation}>{this.state.detalle.description}</Text>
-                        <View  style={styles.contenedor}>
+                        <View style={styles.contenedor}>
                             <Text style={styles.descriptionBotones}>{this.state.contador} </Text>
-                            <View  style={styles.contenedorBotones}>
-                            <Button color={'#F5A9A9'} onPress={this.incrementar.bind(this)} title="+"></Button>
-                            <View style={styles.espacio}></View>
-                            <Button color={'#F5A9A9'} onPress={this.decrementar.bind(this)} title="-"></Button>
+                            <View style={styles.contenedorBotones}>
+                                <Button color={'#F5A9A9'} onPress={this.incrementar.bind(this)} title="+"></Button>
+                                <View style={styles.espacio}></View>
+                                <Button color={'#F5A9A9'} onPress={this.decrementar.bind(this)} title="-"></Button>
                             </View>
                         </View>
-                        <Text style={styles.descriptionLocation}>{this.state.detalle.price }</Text>
+                        <Text style={styles.descriptionLocation}>{this.state.detalle.price}</Text>
                         <Text style={styles.descriptionLocation}>{this.state.detalle.price * this.state.contador}</Text>
 
                     </View>
@@ -93,7 +96,7 @@ class Detalle extends Component {
                     <View style={styles.descriptionButton}>
                         <Button
                             color={'#F5A9A9'}
-                            onPress={() => { this.props.navigation.navigate('CarritoScreen', { id: this.state.detalle._id,cant:this.state.contador }) }}
+                            onPress={() => { this.props.navigation.navigate('CarritoScreen', { id: this.state.detalle._id, cant: this.state.contador }) }}
                             title="Añardir al carrito de compras"
                             loading
                             loadingProps={{ size: "small", color: "#F5A9A9" }}
