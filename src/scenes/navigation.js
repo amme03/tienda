@@ -1,4 +1,7 @@
 import { createStackNavigator, createMaterialTopTabNavigator, createDrawerNavigator, } from 'react-navigation';
+//import Icon from 'react-native-vector-icons/FontAwesome';
+import SideMenu from './side-menu'
+
 //stack
 import Catalogo from './Catalogo';
 import Mercado from './Mercado';
@@ -14,7 +17,6 @@ const AppNavigator = createStackNavigator({
     MercadoScreen: {
         screen: Mercado
     },
-
     DetalleScreen: {
         screen: Detalle
     },
@@ -41,11 +43,13 @@ const AppNavigator = createStackNavigator({
                 fontWeight: '500',
                 fontSize: 18,
             },
-             
         }
     }
-
 );
+
+//const iconCatalogo = (<Icon name="shopping-basket" size={24} color='#999' />);
+//const iconMercado = (<Icon name="shopping-bag" size={24} color='#999' />);
+//const iconFormulario = (<Icon name="user-circle" size={24} color='#999' />);
 
 const Tabs = createMaterialTopTabNavigator({
     Tab1: { screen: Catalogo },
@@ -53,7 +57,6 @@ const Tabs = createMaterialTopTabNavigator({
 },
     {
         order: ['Tab1', 'Tab2'],
-
         swipeEnabled: true,
         tabBarOptions: {
             labelStyle: {
@@ -74,23 +77,23 @@ const Tabs = createMaterialTopTabNavigator({
 
 );
 
-
-export const Drawer = createDrawerNavigator({
-    Mercado: { screen: AppNavigator },
-    Hogar: { screen: Tabs },},{
+export const Drawer = createDrawerNavigator(
+    {
+        Mercado: { screen: AppNavigator },
+        Hogar: { screen: Tabs },
+    }, { drawerWidht: 300,
+        contentComponent: SideMenu,
         contentOptions: {
-        activeTintColor: 'blue',
-        itemsContainerStyle: {
-          marginVertical: 1,
-          
-        },
-        iconContainerStyle: {
-          opacity: 10,
-          backgroundColor: '#F5A9A9',
-          borderBottomColor: '#4527A0'
-        },
-        
-        
-      }
+           
+            activeTintColor: 'blue',
+            itemsContainerStyle: {
+                marginVertical: 1,
+            },
+            iconContainerStyle: {
+                opacity: 10,
+                backgroundColor: '#F5A9A9',
+                borderBottomColor: '#4527A0'
+            },
+        }
 
-})
+    })
