@@ -1,16 +1,10 @@
-
-
 import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
   Text, Button,Image,
 } from 'react-native';
-
-
-
-import {Drawer} from './src/scenes/navigation';
-
+import SwitchNavigator from './src/scenes/Navigation/navigation';
 
 
 type Props = {};
@@ -19,15 +13,11 @@ export default class App extends Component<Props> {
     super(props);
 
   }
-
-
-
   render() {
     return (
-      <Drawer/>
+      <SwitchNavigator/>
       
     );
   }
 }
-
 

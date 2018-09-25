@@ -1,14 +1,20 @@
-import { createStackNavigator, createMaterialTopTabNavigator, createDrawerNavigator, } from 'react-navigation';
+import { createStackNavigator, createMaterialTopTabNavigator, createDrawerNavigator,createSwitchNavigator } from 'react-navigation';
 //import Icon from 'react-native-vector-icons/FontAwesome';
 import SideMenu from './side-menu'
 
 //stack
-import Catalogo from './Catalogo';
-import Mercado from './Mercado';
-import Detalle from './Detalle';
-import Carrito from './Carrito';
-import Formulario from './Formulario';
-import Success from './Success';
+import Catalogo from '../Catalogo';
+import Mercado from '../Mercado';
+import Detalle from '../Detalle';
+import Carrito from '../Carrito';
+import Formulario from '../Formulario';
+import Success from '../Success';
+
+
+//auth
+import Auth from './../Auth';
+import AuthLoading from './../AuthLoading';
+
 
 const AppNavigator = createStackNavigator({
     CatalogoScreen: {
@@ -77,14 +83,13 @@ const Tabs = createMaterialTopTabNavigator({
 
 );
 
-export const Drawer = createDrawerNavigator(
+const Drawer = createDrawerNavigator(
     {
         Mercado: { screen: AppNavigator },
         Hogar: { screen: Tabs },
     }, { drawerWidht: 300,
         contentComponent: SideMenu,
         contentOptions: {
-           
             activeTintColor: 'blue',
             itemsContainerStyle: {
                 marginVertical: 1,
@@ -96,4 +101,12 @@ export const Drawer = createDrawerNavigator(
             },
         }
 
-    })
+    });
+
+    export default SwitchNavigator = createSwitchNavigator({
+        Auth: Auth,
+        AuthLoading: AuthLoading,
+        App: Drawer
+      },{
+        initialRouteName: 'AuthLoading'
+      })

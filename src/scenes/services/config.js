@@ -2,7 +2,8 @@ export const  API_BASE="https://shoppingproducts.herokuapp.com";
 
 export const  HTTP_USER={
     getUsers:'/users',
-    getUser:'/user'
+    getUser:'/user',
+    auth:'/auth'
 }
 
 export const  HTTP_PRODUCT={

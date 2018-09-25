@@ -28,8 +28,21 @@ class HttpUser {
             console.log(error);
         }
     }
-}
 
+    async auth( login, password ){
+        try {
+            const url = `${API_BASE}${HTTP_USER.getUser}${HTTP_USER.auth}?email=${login}&password=${password}`
+            console.warn( url );
+            const data = await httpBase.baseGet( url, {} );
+            return data;
+        } catch( err ){
+            //console.log(err);
+            throw err;
+        }
+    }
+
+
+}
 
 
 export default new HttpUser; 
