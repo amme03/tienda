@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Image, Button, Text } from 'react-native';
-//import Api from './../../../utils/api';//con api externa
 import styles from './components/styles/style-detalle';
 import { YellowBox } from 'react-native';
 import HttpProducts from '../../scenes/services/Products/http-products';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
-
+import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
 class Detalle extends Component {
     constructor(props) {
         super(props);
         this.state = {
             detalle: {},
             contador: 0,
-            isDisabled: true,
+            isDisabled: this.props.cartItems.length <= 1,
         }
     }
     //Ciclo de vida del componente
@@ -37,18 +37,63 @@ class Detalle extends Component {
     }
     //Funciones para agregar o reducir la cantidad de articulos que se van a comprar
     incrementar() {
+        var incremento = this.state.contador === 20 ? 20 : this.state.contador + 1;
+        var data = {
+            _id: '',
+            image: '',
+            avatar: '',
+            description: '',
+            name: '',
+            price: 0
+        };
+        data._id = this.state.detalle.name + incremento;
+        data.image = this.state.detalle.image;
+        data.avatar = this.state.detalle.avatar;
+        data.description = this.state.detalle.description;
+        data.name = this.state.detalle.name;
+        data.price = this.state.detalle.price;
         this.setState({
-            contador: this.state.contador === 20 ? 20 : this.state.contador + 1,
+            contador: incremento,
             isDisabled: false,
-        })
+        });
+
+        console.log('Adjuntar-->' + data._id);
+        if (this.state.contador !== 20) { this.props.addItemToCart(data); }
+
     }
     decrementar() {
-        console.log(this.state.contador === 0);
-        this.setState({
-            isDisabled: this.state.contador <= 1,
-            contador: this.state.contador === 0 ? 0 : this.state.contador - 1,
 
-        })
+        var decremento = this.state.contador === 0 ? 0 : this.state.contador;
+        var data = {
+            _id: '',
+            image: '',
+            avatar: '',
+            description: '',
+            name: '',
+            price: 0
+        };
+
+        data._id = this.state.detalle.name + decremento;
+        data.image = this.state.detalle.image;
+        data.avatar = this.state.detalle.avatar;
+        data.description = this.state.detalle.description;
+        data.name = this.state.detalle.name;
+        data.price = this.state.detalle.price;
+
+
+
+        this.setState({
+            contador: this.state.contador === 0 ? 0 : this.state.contador - 1,
+            isDisabled: this.props.cartItems.length <= 1,
+
+
+        });
+
+        if (this.state.contador !== 0) {
+            console.log('Borrar-->' + data._id);
+            this.props.removeItem(data);
+        }
+
     }
     render() {
         return (
@@ -111,4 +156,18 @@ class Detalle extends Component {
     };
 }
 
-export default Detalle;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addItemToCart: (data) => {
+            dispatch({ type: 'ADD_TO_CARD', payload: data })
+        },
+        removeItem: (data) => dispatch({ type: 'REMOVE_FROM_CART', payload: data })
+    }
+}
+
+const mapStateToProps=(state)=>{
+    return{
+        cartItems:state
+    }
+  }
+export default connect(mapStateToProps, mapDispatchToProps)(Detalle);

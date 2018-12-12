@@ -8,6 +8,7 @@ YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTIm
 import ItemCatalogo from './components/item-catalogo';
 import ItemSeparator from './components/item-separator';
 import HttpProducts from '../../scenes/services/Products/http-products';
+import VideoComponent from './components/video-components';
 
 class Mercado extends Component {
     constructor(props) {
@@ -43,7 +44,7 @@ class Mercado extends Component {
         this.setState({ ArticleListMercado: data })
 
     }
-//Encabezado de la interfaz
+    //Encabezado de la interfaz
     static navigationOptions = {
         title: 'Mercado',
         headerTitleStyle: {
@@ -60,9 +61,9 @@ class Mercado extends Component {
         return (
             <ScrollView style={styles.container}>
                 <View>
-                    <Image
-                        style={styles.imageBarnner}
-                        source={require('./components/image/descarga.jpeg')} />
+                    <View>
+                        <VideoComponent />
+                    </View>
                 </View>
                 <View>
                     <ScrollView style={styles.container}>

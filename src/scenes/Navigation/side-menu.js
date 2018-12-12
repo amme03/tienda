@@ -19,7 +19,7 @@ class SideMenu extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.separador} >
-                    <ProfileOverview user={this.user} />
+                  {/*  <ProfileOverview user={this.user} />*/}
                     <TouchableOpacity style={{
                         width: 280,
                         height: 200,

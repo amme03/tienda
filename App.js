@@ -5,7 +5,8 @@ import {
   Text, Button, Image,
 } from 'react-native';
 import SwitchNavigator from './src/scenes/Navigation/navigation';
-
+import{Provider}from 'react-redux';
+import store from './store';
 
 
 import RNLanguajes from 'react-native-languages';
@@ -30,8 +31,9 @@ export default class App extends Component<Props> {
 
   render() {
     return (
+      <Provider store={store}>
       <SwitchNavigator />
-
+      </Provider>
     );
   }
 }

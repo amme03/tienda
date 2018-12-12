@@ -1,7 +1,6 @@
 import { createStackNavigator, createMaterialTopTabNavigator, createDrawerNavigator,createSwitchNavigator } from 'react-navigation';
-//import Icon from 'react-native-vector-icons/FontAwesome';
-import SideMenu from './side-menu'
-
+import SideMenu from './side-menu';
+import React from 'react';
 //stack
 import Catalogo from '../Catalogo';
 import Mercado from '../Mercado';
@@ -10,11 +9,12 @@ import Carrito from '../Carrito';
 import Formulario from '../Formulario';
 import Success from '../Success';
 
-
 //auth
 import Auth from './../Auth';
 import AuthLoading from './../AuthLoading';
 
+//ShoppingCard
+import ShoppingCardIcon from '../ShoppingCartIcon';
 
 const AppNavigator = createStackNavigator({
     CatalogoScreen: {
@@ -43,7 +43,9 @@ const AppNavigator = createStackNavigator({
             headerStyle: {
                 backgroundColor: '#F5A9A9',
                 borderBottomColor: '#4527A0'
-            },
+            },headerRight:(
+                <ShoppingCardIcon />
+            ),
             headerTintColor: '#fff',
             headerTitleStyle: {
                 fontWeight: '500',

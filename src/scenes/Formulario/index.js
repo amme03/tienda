@@ -45,7 +45,7 @@ class Formulario extends Component {
                     <Text style={styles.formInput}> Ana Maria Marrugo Escobar </Text>
                     <Text style={styles.formLabel}> {i18n.t('PHONE')} </Text>
                     <TextInput
-                        placeholder={i18n.t(TELCONT)} 
+                        placeholder={i18n.t('TELCONT')} 
                         style={styles.formInput}
                     />
                     <Text style={styles.formLabel}> {i18n.t('EMAIL')} </Text>

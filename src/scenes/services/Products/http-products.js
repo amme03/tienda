@@ -18,6 +18,7 @@ class HttpProduct {
             const url = `${API_BASE}${HTTP_PRODUCT.getProducto}${ID}`;
             console.log("ANANANANNA--->"+url);
             const data = await httpBase.baseGet(url, {});
+            console.log("data--->"+data);
             return data;
         } catch (error) {
             console.log(error);

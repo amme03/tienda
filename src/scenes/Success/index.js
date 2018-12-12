@@ -22,7 +22,7 @@ class Success extends Component {
         this.setState({ carrito: data, cantidad: cant * 1, })
     }
     static navigationOptions = {
-        title: 'Confirmacion de compra',
+        title: 'Confirmación',
         headerTitleStyle: {
             fontSize: 26,
         }

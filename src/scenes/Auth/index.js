@@ -52,7 +52,7 @@ class Auth extends Component {
         <Button
             title='login'
             onPress={ this.login }
-            //onPress={ ()=>{ this.login() } }
+       
         />
       </View>
     );
