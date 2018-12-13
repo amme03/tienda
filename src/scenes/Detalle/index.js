@@ -5,7 +5,7 @@ import { YellowBox } from 'react-native';
 import HttpProducts from '../../scenes/services/Products/http-products';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 import { connect } from 'react-redux';
-import { withNavigation } from 'react-navigation';
+
 class Detalle extends Component {
     constructor(props) {
         super(props);
@@ -142,7 +142,7 @@ class Detalle extends Component {
                         <Button
                             color={'#F5A9A9'}
                             onPress={() => { this.props.navigation.navigate('CarritoScreen', { id: this.state.detalle._id, cant: this.state.contador }) }}
-                            title="Añardir al carrito de compras"
+                            title="Ir al carrito de compras"
                             loading
                             loadingProps={{ size: "small", color: "#F5A9A9" }}
                             titleStyle={{ fontWeight: "700" }}

@@ -31,7 +31,7 @@ class SideMenu extends Component {
                                 <Image
                                     style={styles.imageLogo}
                                     source={{ uri: 'https://c.wallhere.com/photos/f2/5d/happy_women_music_glasses_women_with_glasses_face_profile_headphones-220024.jpg!d' }}></Image>
-                                <Text style={styles.textItemNavigationTitle} >Ana Maria</Text>
+                                <Text style={styles.textItemNavigationTitle} >{this.user.name}</Text>
                             </View>
                         </ImageBackground>
                     </TouchableOpacity>
@@ -89,7 +89,7 @@ class SideMenu extends Component {
                         <TouchableOpacity style={{
                             width: 300,
                             height: 110,
-                        }} onPress={() => this.props.navigation.navigate('FormularioScreen')}>
+                        }} onPress={() => this.props.navigation.navigate('CarritoScreen')}>
                             <ImageBackground
                                 source={require('../Mercado/components/image/carro.jpg')}
                                 style={{

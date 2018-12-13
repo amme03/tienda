@@ -61,9 +61,10 @@ const styles = StyleSheet.create({
         paddingVertical: 3,
         marginBottom: 3,
         paddingLeft: 10,
-        width: 200,
+        width: 500,
         height: 50,
         alignItems: 'center',
+        flexDirection: 'row',
     },
     linea: {
         paddingLeft: 10,
