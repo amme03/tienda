@@ -75,6 +75,9 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
         borderBottomWidth: 3,
         borderBottomColor: '#F5A9A9',
+    },espacio: {
+        width: 50,
+
     },
 });
 export default styles;

@@ -22,7 +22,8 @@ const ItemCatalogo = (
                     <Text style={styles.articlePrice}>{props.article.price}</Text>
                     <Text style={styles.articlePrice}>{props.article.quantity}</Text>
                 </View>
-                <View style={styles.descriptionButton}>
+               
+                <View style={styles.espacio}>
                     <Button
                         color={'#F5A9A9'}
                         onPress={ () => props.onPressEvent(props.article) }
@@ -30,9 +31,8 @@ const ItemCatalogo = (
                         loading
                         loadingProps={{ size: "small", color: "#F5A9A9" }}
                         titleStyle={{ fontWeight: "700" }}
-                        containerStyle={{ marginTop: 20 }}
-                        
-                    />
+                        containerStyle={{ marginTop: 20, padding: 5, }}
+                     />
                 </View>
             </View>
         </TouchableHighlight>

@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Image, Button, Text, } from 'react-native';
 import styles from './components/styles/styles-success';
-import Api from './../../../utils/api'
 import { YellowBox } from 'react-native';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
-
+import { connect } from 'react-redux';
 class Success extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            carrito: {},
-            iva: {},
-            cantidad: {},
+            total: 0,
         }
     }
     //Ciclo de vida del componente
     async componentDidMount() {
-        const data = await Api.getArticleAwaitDetallle(this.props.navigation.getParam('id', ''));
-        console.log(data);
-        const cant = this.props.navigation.getParam('cant', '');
-        this.setState({ carrito: data, cantidad: cant * 1, })
+        this.actualizar();
+    }
+
+    actualizar() {
+        var totalVenta = 0;
+        this.props.cartItems.forEach(element => {
+
+            totalVenta = totalVenta + element.price;
+            this.props.removeItem(element);
+
+        });
+        this.setState({
+            total: totalVenta,
+        });
     }
     static navigationOptions = {
         title: 'Confirmación',
@@ -36,7 +43,7 @@ class Success extends Component {
                         source={{ uri: 'https://previews.123rf.com/images/karakotsya/karakotsya1710/karakotsya171000074/87529649-thank-you-for-shopping-hand-lettering-modern-brush-calligraphy-black-ink-typography-vector-illustrat.jpg' }}></Image>
                 </View>
                 <View style={styles.imageBarnner} >
-                    <Text style={styles.formInputLabel}>Su compra por ${this.state.carrito.price * this.state.cantidad} fue exitosa.</Text>
+                    <Text style={styles.formInputLabel}>Su compra por ${this.state.total} fue exitosa.</Text>
                     <Text style={styles.formInput}>Si los productos del pedido están disponibles los pedidos serán enviados en un plazo máximo de veinticuatro (24) horas después de la recepción del comprobante de pago.</Text>
                     <Text style={styles.formInput}>Para cambios, devoluciones, quejas y reclamos llamar a la linea nacional 0180007345999.</Text>
                     <Text style={styles.formInput}></Text>
@@ -63,7 +70,7 @@ class Success extends Component {
                             loading
                             titleStyle={{ fontWeight: "700" }}
                             containerStyle={{ marginTop: 20 }}
-                             />
+                        />
                     </View>
                 </View>
 
@@ -71,5 +78,14 @@ class Success extends Component {
         );
     };
 }
-
-export default Success;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removeItem: (data) => dispatch({ type: 'REMOVE_FROM_CART', payload: data })
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        cartItems: state
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Success);

@@ -9,22 +9,11 @@ class Formulario extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            carrito: {},
-            iva: {},
-            cantidad: {},
-            profit:{},
-            
-
         }
     }
     //Ciclo de vida del componente
     async componentDidMount() {
-        const data = await Api.getArticleAwaitDetallle(this.props.navigation.getParam('id', ''));
-        const cant = this.props.navigation.getParam('cant', '');
-       
-        console.log(data);
-        this.setState({ carrito: data, cantidad: cant*1, })
-    }
+      }
     static navigationOptions = {
         title: 'Datos de compra',
         headerTitleStyle: {
@@ -60,7 +49,7 @@ class Formulario extends Component {
                     <View style={styles.descriptionButton}>
                         <Button
                             color={'#F5A9A9'}
-                            onPress={() => { this.props.navigation.navigate('SuccessScreen', { id: this.state.carrito._id, cant:this.state.cantidad }) }}
+                            onPress={() => { this.props.navigation.navigate('SuccessScreen') }}
                             title="Finalizar compra"
                             loading
                             titleStyle={{ fontWeight: "700" }}

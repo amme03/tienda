@@ -22,7 +22,12 @@ const styles = StyleSheet.create({
     articlePrice: {
         fontSize: 10,
         fontWeight: '200',
-    }
+    },
+    espacio: {
+        
+        padding: 5,
+        margin: 5,
+    },
 
 });
 export default styles;

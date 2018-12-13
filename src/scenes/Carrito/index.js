@@ -127,6 +127,7 @@ class Carrito extends Component {
 
                     </View>
                     <View style={styles.descriptionButton}>
+                    <View style={styles.espacio}></View>
                         <Button
                             color={'#F5A9A9'}
                             onPress={() => { this.props.navigation.navigate('FormularioScreen', { id: this.state.ArticleListMercado._id, cant: this.state.cantidad }) }}
@@ -134,18 +135,19 @@ class Carrito extends Component {
                             loading
                             loadingProps={{ size: "small", color: "#F5A9A9" }}
                             titleStyle={{ fontWeight: "700" }}
-                            containerStyle={{ marginTop: 20 }}
+                            containerStyle={{ marginTop: 20,paddingBottom: 10, }}
                             disabled={this.state.isDisabled}
                         />
+                        <View style={styles.espacio}></View>
                          <Button
                             color={'#F5A9A9'}
                             onPress={() => { this.props.navigation.navigate('MercadoScreen') }}
-                            title="seguir comprar"
+                            title="seguir comprando"
                             loading
                             loadingProps={{ size: "small", color: "#F5A9A9" }}
                             titleStyle={{ fontWeight: "700" }}
-                            containerStyle={{ marginTop: 20 }}
-                            disabled={this.state.isDisabled}
+                            containerStyle={{ marginTop: 20, paddingBottom: 10,}}
+                            
                         />
                     </View>
                     <ScrollView style={styles.container}>
